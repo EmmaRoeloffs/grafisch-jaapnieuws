@@ -1,0 +1,149 @@
+/* Page layout */
+
+.site-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.page-layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.content-layout {
+    padding: 25px 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Header */
+
+.header {
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.logo {
+    width: 70px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.logout {
+    font-size: 20px;
+}
+
+/* Footer */
+
+.footer {
+    border-top: 2px solid #e5e5e5;
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.jaap {
+    color: #4c9445;
+}
+
+.news {
+    color: #d8b33c;
+}
+
+/* Ad section */
+
+.ad-section {
+    display: flex;
+    justify-content: center;
+}
+
+.ad {
+    width: 100%;
+}
+
+.ad-laptop {
+    display: none;
+}
+
+/* Responsive layout */
+
+/*Laptop*/
+@media (min-width: 900px) {
+    .content-layout {
+        grid-template-columns: 1fr 400px;
+        gap: 40px;
+        align-items: start;
+    }
+
+    .news-card {
+        display: grid;
+        grid-template-columns: 225px 1fr;
+        gap: 30px;
+        align-items: start;
+    }
+
+    .news-card h2 {
+        font-size: 30px;
+    }
+
+    .ad-phone {
+        display: none;
+    }
+
+    .ad-laptop {
+        display: block;
+    }
+
+    .logo {
+        width: 90px;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 45px;
+    }
+
+    .search-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .search-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .logout {
+        font-size: 23px;
+    }
+
+}
+

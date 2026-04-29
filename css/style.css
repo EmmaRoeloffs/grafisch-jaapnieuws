@@ -1,0 +1,46 @@
+/* Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+}
+
+/* Components */
+
+/* News components */
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.news-image {
+    width: 100%;
+}
+
+.news-card h2 {
+    color: #4f8546;
+    font-size: 22px;
+    line-height: 1.2;
+}
