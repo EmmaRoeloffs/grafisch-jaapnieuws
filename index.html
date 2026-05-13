@@ -19,6 +19,7 @@
     <img src="images/LOGO.png" alt="logo" class="logo">
 
     <div class="header-right">
+      <a href="pages/create-article.html" class="create-btn hidden" id="journalist">+</a>
       <a href="pages/search.html" class="search-btn">
         <img src="images/search.png" alt="Search" class="search-icon">
       </a>
@@ -53,5 +54,14 @@
   </footer>
 
 </div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const role = params.get("role");
+
+  if (role === "journalist") {
+    document.getElementById("journalist").classList.remove("hidden");
+  }
+</script>
 </body>
 </html>
+
