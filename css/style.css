@@ -59,6 +59,22 @@ p {
     line-height: 1.2;
 }
 
+
+/* Centered page with grey sides */
+
+.center-page {
+    background: #d9d9d9;
+    display: grid;
+    justify-items: center;
+}
+
+.center-card {
+    width: 100%;
+    max-width: 880px;
+    background: white;
+}
+
+
 /* Button */
 
 .btn {
@@ -430,6 +446,97 @@ p {
 
 }
 
+/* Create article page */
+
+/* Create article */
+
+.create-page {
+    min-height: 100%;
+    background: white;
+    display: grid;
+    place-items: start center;
+    padding: 25px;
+}
+
+.create-card {
+    width: 100%;
+    max-width: 360px;
+    background: white;
+    display: grid;
+    gap: 45px;
+}
+
+.create-header {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.create-header h1 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.create-form {
+    display: grid;
+    gap: 28px;
+}
+
+.create-form input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    padding: 8px 0;
+    font-size: 18px;
+    outline: none;
+}
+
+.category-section h2 {
+    color: #111;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 14px;
+}
+
+.category-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 18px;
+}
+
+.category-list button {
+    background: white;
+    border: 1px solid #777;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 15px;
+    color: #777;
+}
+
+.image-upload {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #eeeeee;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.image-upload img {
+    width: 22px;
+    height: 22px;
+}
+
+.image-upload span {
+    font-size: 14px;
+    color: #333;
+}
+
+.create-form .btn {
+    justify-self: center;
+}
+
 /* Desktop */
 
 @media (min-width: 900px) {
@@ -494,7 +601,7 @@ p {
     }
 
     .auth-card {
-        max-width: 430px;
+        max-width: 450px;
         min-height: 610px;
         border-radius: 5px;
         padding: 25px 55px 25px;
@@ -531,5 +638,31 @@ p {
         width: 44px;
         height: 44px;
         font-size: 36px;
+    }
+
+    .create-page {
+        background: #b3b3b3;
+        place-items: center;
+        padding: 5px;
+    }
+
+    .create-card {
+        max-width: 750px;
+        min-height: 530px;
+        padding: 35px 50px;
+    }
+
+    .create-header {
+        justify-content: flex-start;
+    }
+
+    .create-header h1 {
+        font-size: 28px;
+    }
+
+    .create-form {
+        max-width: 520px;
+        width: 100%;
+        justify-self: center;
     }
 }

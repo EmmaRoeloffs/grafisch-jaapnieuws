@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JaapNews - Creëer artikel</title>
+
+    <link rel="icon" href="../images/LOGO.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="page-layout">
+
+    <header class="header">
+        <div class="site-container header-inner">
+            <img src="../images/LOGO.png" alt="JaapNews logo" class="logo">
+
+            <div class="header-right">
+                <a href="search.html" class="search-btn">
+                    <img src="../images/search.png" alt="Zoeken" class="search-icon">
+                </a>
+
+                <a href="login.html" class="logout">Log uit</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="create-page center-page">
+        <section class="create-card">
+
+            <div class="create-header">
+                <button class="back-btn" onclick="history.back()">‹</button>
+                <h1>Creëer artikel</h1>
+            </div>
+
+            <div class="create-form">
+                <input type="text" placeholder="Titel">
+                <input type="text" placeholder="Text">
+
+                <div class="category-section">
+                    <h2>Categorieën</h2>
+
+                    <div class="category-list">
+                        <button>Sport</button>
+                        <button>Cultuur</button>
+                        <button>Regio</button>
+                        <button>Ongeval</button>
+                        <button>Weer</button>
+                        <button>Politiek</button>
+                    </div>
+                </div>
+
+                <div class="image-upload">
+                    <img src="../images/select-image.png" alt="Selecteer afbeelding">
+                    <span>Kies afbeelding</span>
+                </div>
+
+                <a href="../index.html?role=journalist" class="btn btn-primary">Maak artikel</a>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="site-container">
+            <span class="jaap">Jaap</span><span class="news">News</span>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
