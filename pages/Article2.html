@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,47 @@
 
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/layout.js" defer></script>
 </head>
+
 <body>
 
 <div class="page-layout">
-
-    <header class="header">
-        <div class="site-container header-inner">
-            <img src="../images/LOGO.png" alt="JaapNews logo" class="logo">
-        </div>
-    </header>
+    <site-header></site-header>
 
     <main class="article-page site-container">
-        <button class="back-btn" onclick="history.back()">‹</button>
-
-        <div class="article-content">
-            <img src="../images/NaJarenDalen.png" alt="Werkende armen" class="article-image">
-
-            <h1>Na jaren van daling stijgt het aantal werkende armen weer</h1>
-
-            <p>Het aantal werkende armen in Nederland is voor het eerst in jaren weer gestegen. Het gaat om mensen met een baan die toch moeite hebben om rond te komen en hun vaste lasten te betalen.</p>
-
-            <p>Vooral mensen met flexibele contracten en zelfstandigen zonder vast inkomen lopen meer risico om in armoede te belanden. Ook mensen die parttime werken of een laag loon hebben, behoren vaker tot deze groep.</p>
-
-            <p>De stijging komt onder meer door hogere kosten van levensonderhoud, zoals energie, huur en boodschappen. Onderzoekers noemen de ontwikkeling zorgelijk, omdat werk normaal gesproken juist bescherming biedt tegen armoede.</p>
+        <div class="page-toolbar">
+            <button class="back-btn" type="button" onclick="history.back()" aria-label="Vorige pagina"></button>
         </div>
 
-        <section class="comments">
-            <h2>Reacties</h2>
+        <article class="article-content">
+            <header class="article-header">
+                <p class="story-meta">Nederland · Economie</p>
+                <h1>Na jaren van daling stijgt het aantal werkende armen weer</h1>
+                <p class="article-deck">Steeds meer mensen met een baan hebben moeite om rond te komen. Vooral
+                    flexwerkers, zelfstandigen en huishoudens met lage lonen voelen de druk.</p>
+            </header>
+
+            <img src="../images/NaJarenDalen.png" alt="Werkende armen" class="article-image">
+
+            <div class="article-body">
+                <p>Het aantal werkende armen in Nederland is voor het eerst in jaren weer gestegen. Het gaat om
+                    mensen met een baan die toch moeite hebben om rond te komen en hun vaste lasten te betalen.</p>
+                <p>Vooral mensen met flexibele contracten en zelfstandigen zonder vast inkomen lopen meer risico om
+                    in armoede te belanden. Ook mensen die parttime werken of een laag loon hebben, behoren vaker
+                    tot deze groep.</p>
+                <p>De stijging komt onder meer door hogere kosten van levensonderhoud, zoals energie, huur en
+                    boodschappen. Onderzoekers noemen de ontwikkeling zorgelijk, omdat werk normaal gesproken juist
+                    bescherming biedt tegen armoede.</p>
+            </div>
+        </article>
+
+        <section class="comments" aria-labelledby="comments-title">
+            <h2 id="comments-title">Reacties</h2>
 
             <div class="comment">
                 <h3>Jan van Zijk</h3>
-                <p>Die generatie van tegenwoordig is gewoon lui 😅</p>
+                <p>Die generatie van tegenwoordig is gewoon lui &#128517;</p>
             </div>
 
             <div class="comment">
@@ -51,17 +61,18 @@
                 <p>JA!!</p>
             </div>
 
-            <input type="text" placeholder="Voeg reactie toe">
+            <label class="comment-field">
+                <span class="visually-hidden">Voeg reactie toe</span>
+                <input name="comment" type="text" placeholder="Voeg reactie toe">
+            </label>
         </section>
 
         <img src="../images/AD-Article.png" alt="Advertentie" class="article-ad">
     </main>
 
-    <footer class="footer">
-        <span class="jaap">Jaap</span><span class="news">News</span>
-    </footer>
-
+    <site-footer></site-footer>
 </div>
 
 </body>
+
 </html>

@@ -1,74 +1,119 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JaapNews - Creëer artikel</title>
+    <title>JaapNews - Cre&euml;er artikel</title>
 
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/layout.js" defer></script>
 </head>
+
 <body>
 
 <div class="page-layout">
+    <site-header></site-header>
 
-    <header class="header">
-        <div class="site-container header-inner">
-            <img src="../images/LOGO.png" alt="JaapNews logo" class="logo">
+    <main class="create-page">
+        <section class="create-shell" aria-labelledby="create-title">
+            <header class="create-header">
+                <button class="back-btn" type="button" onclick="history.back()" aria-label="Vorige pagina"></button>
 
-            <div class="header-right">
-                <a href="search.html" class="search-btn">
-                    <img src="../images/search.png" alt="Zoeken" class="search-icon">
-                </a>
+                <div class="create-title-copy">
+                    <span class="eyebrow">Redactie</span>
+                    <h1 id="create-title">Cre&euml;er artikel</h1>
+                    <p>Schrijf kort, duidelijk en nieuwswaardig. De belangrijkste informatie hoort bovenaan.</p>
+                </div>
 
-                <a href="login.html" class="logout">Log uit</a>
-            </div>
-        </div>
-    </header>
+                <p class="editor-status">Concept</p>
+            </header>
 
-    <main class="create-page center-page">
-        <section class="create-card">
+            <div class="create-layout">
+                <form class="create-form">
+                    <div class="editor-card">
+                        <div class="editor-card-header">
+                            <span class="eyebrow">Artikel</span>
+                            <span>Nieuwe publicatie</span>
+                        </div>
 
-            <div class="create-header">
-                <button class="back-btn" onclick="history.back()">‹</button>
-                <h1>Creëer artikel</h1>
-            </div>
+                        <div class="field-group title-field">
+                            <label for="article-title">Titel</label>
+                            <input id="article-title" type="text"
+                                   placeholder="Bijvoorbeeld: Auto te water bij Julianasluis">
+                            <p class="field-help">Maak de titel concreet en actief.</p>
+                        </div>
 
-            <div class="create-form">
-                <input type="text" placeholder="Titel">
-                <input type="text" placeholder="Text">
+                        <div class="field-group">
+                            <label for="article-summary">Korte intro</label>
+                            <input id="article-summary" type="text" placeholder="Vat het nieuws samen in een zin">
+                            <p class="field-help">Een goede intro vertelt meteen wat er is gebeurd en waarom het
+                                telt.</p>
+                        </div>
 
-                <div class="category-section">
-                    <h2>Categorieën</h2>
-
-                    <div class="category-list">
-                        <button>Sport</button>
-                        <button>Cultuur</button>
-                        <button>Regio</button>
-                        <button>Ongeval</button>
-                        <button>Weer</button>
-                        <button>Politiek</button>
+                        <div class="field-group">
+                            <label for="article-text">Artikeltekst</label>
+                            <textarea id="article-text" placeholder="Schrijf hier het volledige artikel"></textarea>
+                            <p class="field-help">Begin met de kern, voeg daarna context en details toe.</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="image-upload">
-                    <img src="../images/select-image.png" alt="Selecteer afbeelding">
-                    <span>Kies afbeelding</span>
-                </div>
+                    <div class="form-actions">
+                        <a href="../index.html?role=journalist" class="btn btn-primary">Maak artikel</a>
+                        <a href="../index.html?role=journalist" class="btn btn-secondary">Annuleren</a>
+                    </div>
+                </form>
 
-                <a href="../index.html?role=journalist" class="btn btn-primary">Maak artikel</a>
+                <aside class="editor-sidebar" aria-label="Artikel instellingen">
+                    <section class="editor-panel">
+                        <div>
+                            <span class="eyebrow">Rubriek</span>
+                            <h2>Categorie&euml;n</h2>
+                        </div>
+
+                        <div class="category-list">
+                            <button type="button">Sport</button>
+                            <button type="button">Cultuur</button>
+                            <button type="button">Regio</button>
+                            <button type="button">Ongeval</button>
+                            <button type="button">Weer</button>
+                            <button type="button">Politiek</button>
+                        </div>
+                    </section>
+
+                    <section class="editor-panel">
+                        <div>
+                            <span class="eyebrow">Media</span>
+                            <h2>Beeld</h2>
+                        </div>
+
+                        <button type="button" class="image-upload">
+                            <img src="../images/select-image.png" alt="">
+                            <span>Kies afbeelding</span>
+                        </button>
+                    </section>
+
+                    <section class="editor-panel checklist-panel">
+                        <div>
+                            <span class="eyebrow">Voor livegang</span>
+                            <h2>Publicatiecheck</h2>
+                        </div>
+
+                        <ul>
+                            <li>Titel is duidelijk</li>
+                            <li>Intro geeft de kern</li>
+                            <li>Categorie is gekozen</li>
+                        </ul>
+                    </section>
+                </aside>
             </div>
-
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="site-container">
-            <span class="jaap">Jaap</span><span class="news">News</span>
-        </div>
-    </footer>
-
+    <site-footer></site-footer>
 </div>
 
 </body>
+
 </html>

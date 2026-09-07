@@ -2,66 +2,73 @@
 <html lang="nl">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JaapNews</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JaapNews</title>
 
-<link rel="icon" href="./images/LOGO.png">
-<link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./images/LOGO.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/layout.js" defer></script>
+</head>
 
 <body>
 
 <div class="page-layout">
+    <site-header show-create></site-header>
 
-  <header class="header">
-    <div class="site-container header-inner">
-    <img src="images/LOGO.png" alt="logo" class="logo">
+    <main class="site-container content-layout">
+        <section class="main-feed" aria-labelledby="latest-title">
+            <div class="section-heading">
+                <span class="eyebrow">Laatste nieuws</span>
+                <h1 id="latest-title">Vandaag belangrijk</h1>
+            </div>
 
-    <div class="header-right">
-      <a href="pages/create-article.html" class="create-btn hidden" id="journalist">+</a>
-      <a href="pages/search.html" class="search-btn">
-        <img src="images/search.png" alt="Search" class="search-icon">
-      </a>
-      <a href="pages/login.html" class="logout">Log uit</a>
-    </div>
-    </div>
-  </header>
+            <a href="pages/Article1.html" class="news-card lead-story">
+                <img src="images/AutoTerWatere.png" alt="Auto in water" class="news-image">
+                <div class="news-card-body">
+                    <p class="story-meta">Regio Gouda · Net binnen</p>
+                    <h2>Auto te water bij Julianasluis in Gouda, slachtoffer naar ziekenhuis</h2>
+                    <p>Hulpdiensten rukten vanochtend uit nadat een auto naast de brug in het water terechtkwam.</p>
+                </div>
+            </a>
 
-  <main class="site-container content-layout">
-    <section class="news-list">
-      <a href="pages/Article1.html" class="news-card">
-        <img src="images/AutoTerWatere.png" alt="Auto in water" class="news-image">
-        <h2>Auto te water bij Julianasluisin Gouda, slachtoffer naar ziekenhuis</h2>
-      </a>
+            <section class="news-list" aria-label="Meer nieuws">
+                <a href="pages/Article2.html" class="news-card">
+                    <img src="images/NaJarenDalen.png" alt="Werkende armen" class="news-image">
+                    <div class="news-card-body">
+                        <p class="story-meta">Nederland · Economie</p>
+                        <h2>Na jaren van daling stijgt het aantal werkende armen weer</h2>
+                        <p>Onderzoekers zien dat vaste lasten en hogere prijzen steeds meer druk zetten op werkende
+                            huishoudens.</p>
+                    </div>
+                </a>
+            </section>
+        </section>
 
-      <a href="pages/Article2.html" class="news-card">
-        <img src="images/NaJarenDalen.png" alt="Werkende armen" class="news-image">
-        <h2>Na jaren van daling stijgt het aantal werkende armen weer</h2>
-      </a>
-    </section>
+        <aside class="sidebar" aria-label="Zijbalk">
+            <section class="side-panel">
+                <div class="section-heading compact">
+                    <span class="eyebrow">Meest gelezen</span>
+                    <h2>Nu populair</h2>
+                </div>
 
-    <div class="ad-section">
-      <img src="images/AD-Phone.png" alt="Advertentie" class="ad ad-phone">
-      <img src="images/AD-Laptop.png" alt="Advertentie" class="ad ad-laptop">
-    </div>
-  </main>
+                <ol class="trending-list">
+                    <li><a href="pages/Article1.html">Auto te water bij Julianasluis in Gouda</a></li>
+                    <li><a href="pages/Article2.html">Aantal werkende armen stijgt weer</a></li>
+                    <li><a href="pages/search-gouda.html">Alles over Gouda</a></li>
+                </ol>
+            </section>
 
-  <footer class="footer">
-    <div class="site-container">
-    <span class="jaap">Jaap</span><span class="news">News</span>
-    </div>
-  </footer>
+            <aside class="ad-section" aria-label="Advertentie">
+                <img src="images/AD-Phone.png" alt="Advertentie" class="ad ad-phone">
+                <img src="images/AD-Laptop.png" alt="Advertentie" class="ad ad-laptop">
+            </aside>
+        </aside>
+    </main>
 
+    <site-footer></site-footer>
 </div>
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const role = params.get("role");
 
-  if (role === "journalist") {
-    document.getElementById("journalist").classList.remove("hidden");
-  }
-</script>
 </body>
-</html>
 
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,44 +8,45 @@
 
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/layout.js" defer></script>
 </head>
+
 <body>
 
 <div class="page-layout">
-
-    <header class="header">
-        <div class="site-container header-inner">
-            <img src="../images/LOGO.png" alt="JaapNews logo" class="logo">
-        </div>
-    </header>
+    <site-header></site-header>
 
     <main class="search-page site-container">
+        <div class="section-heading">
+            <span class="eyebrow">Zoeken</span>
+            <h1>Vind nieuws dat ertoe doet</h1>
+        </div>
+
         <div class="search-bar">
-            <button class="back-btn" onclick="history.back()">‹</button>
+            <button class="back-btn" type="button" onclick="history.back()" aria-label="Vorige pagina"></button>
 
             <div class="search-box">
-                <input type="text" placeholder="Titel of trefwoord">
-                <a href="search-news.html">
-                    <img src="../images/search.png" alt="Zoeken">
+                <label class="visually-hidden" for="search-input">Titel of trefwoord</label>
+                <input id="search-input" type="text" placeholder="Titel of trefwoord">
+                <a href="search-news.html" aria-label="Zoeken">
+                    <img src="../images/search.png" alt="">
                 </a>
             </div>
         </div>
 
-        <div>
-            <h2 class="search-title"><strong>Meest gezocht</strong></h2>
+        <section class="search-section" aria-labelledby="popular-title">
+            <h2 class="search-title" id="popular-title"><strong>Meest gezocht</strong></h2>
 
             <div class="popular-list">
                 <a href="search-gouda.html" class="popular-item">Gouda</a>
                 <a href="search-news.html" class="popular-item">Nieuws</a>
             </div>
-        </div>
+        </section>
     </main>
 
-    <footer class="footer">
-        <span class="jaap">Jaap</span><span class="news">News</span>
-    </footer>
-
+    <site-footer></site-footer>
 </div>
 
 </body>
+
 </html>

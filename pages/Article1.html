@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,45 @@
 
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/layout.js" defer></script>
 </head>
+
 <body>
 
 <div class="page-layout">
-
-    <header class="header">
-        <div class="site-container header-inner">
-            <img src="../images/LOGO.png" alt="JaapNews logo" class="logo">
-        </div>
-    </header>
+    <site-header></site-header>
 
     <main class="article-page site-container">
-        <button class="back-btn" onclick="history.back()">‹</button>
-
-        <div class="article-content">
-            <img src="../images/AutoTerWatere.png" alt="Auto te water" class="article-image">
-            <h1>Auto te water bij Julianasluisin Gouda, slachtoffer naar ziekenhuis</h1>
-            <p>Bij de Julianasluis in Gouda is vanmorgen een auto in het water beland. Hulpdiensten hebben iemand uit het water gehaald en met spoed naar het ziekenhuis gebracht.</p>
-            <p>De auto kwam rond 09.30 uur naast de brug terecht en zonk meteen. Duikers van de brandweer hebben gezocht of er nog meer slachtoffers waren, maar die zijn niet gevonden.</p>
-            <p>Hoe de auto in het water kon belanden, is nog niet bekend. Daar doet de politie onderzoek naar.</p>
+        <div class="page-toolbar">
+            <button class="back-btn" type="button" onclick="history.back()" aria-label="Vorige pagina"></button>
         </div>
 
-        <section class="comments">
-            <h2>Reacties</h2>
+        <article class="article-content">
+            <header class="article-header">
+                <p class="story-meta">Regio Gouda · Vandaag</p>
+                <h1>Auto te water bij Julianasluis in Gouda, slachtoffer naar ziekenhuis</h1>
+                <p class="article-deck">Een auto belandde vanochtend in het water bij de Julianasluis. Een
+                    slachtoffer is door hulpdiensten uit het water gehaald en naar het ziekenhuis gebracht.</p>
+            </header>
+
+            <img src="../images/AutoTerWatere.png" alt="Auto te water" class="article-image">
+
+            <div class="article-body">
+                <p>Bij de Julianasluis in Gouda is vanmorgen een auto in het water beland. Hulpdiensten hebben
+                    iemand uit het water gehaald en met spoed naar het ziekenhuis gebracht.</p>
+                <p>De auto kwam rond 09.30 uur naast de brug terecht en zonk meteen. Duikers van de brandweer hebben
+                    gezocht of er nog meer slachtoffers waren, maar die zijn niet gevonden.</p>
+                <p>Hoe de auto in het water kon belanden, is nog niet bekend. Daar doet de politie onderzoek naar.
+                </p>
+            </div>
+        </article>
+
+        <section class="comments" aria-labelledby="comments-title">
+            <h2 id="comments-title">Reacties</h2>
+
             <div class="comment">
                 <h3>The Joker</h3>
-                <p>Dit krijg je dus als je Google Maps op “kortste route” zet.</p>
+                <p>Dit krijg je dus als je Google Maps op &quot;kortste route&quot; zet.</p>
             </div>
 
             <div class="comment">
@@ -46,17 +59,18 @@
                 <p>Gecondoleerd</p>
             </div>
 
-            <input type="text" placeholder="Voeg reactie toe">
+            <label class="comment-field">
+                <span class="visually-hidden">Voeg reactie toe</span>
+                <input name="comment" type="text" placeholder="Voeg reactie toe">
+            </label>
         </section>
 
         <img src="../images/AD-Article.png" alt="Advertentie" class="article-ad">
     </main>
 
-    <footer class="footer">
-        <span class="jaap">Jaap</span><span class="news">News</span>
-    </footer>
-
+    <site-footer></site-footer>
 </div>
 
 </body>
+
 </html>

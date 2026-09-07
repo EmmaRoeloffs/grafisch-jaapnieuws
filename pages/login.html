@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JaapNews - Login</title>
 
-  <link rel="icon" href="../images/LOGO.png">
-  <link rel="stylesheet" href="../css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JaapNews - Login</title>
+
+    <link rel="icon" href="../images/LOGO.png">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
 
 <main class="auth-page">
-  <section class="auth-card">
+    <section class="auth-shell" aria-labelledby="login-title">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <img src="../images/LOGO.png" alt="JaapNews logo" class="auth-logo">
+                <div>
+                    <span class="brand-name"><span class="jaap">Jaap</span><span class="news">News</span></span>
+                    <p>Nieuws dat dichtbij komt.</p>
+                </div>
+            </div>
 
-    <div style="grid-row: span 2">
-    <div class="auth-brand">
-      <img src="../images/LOGO.png" alt="JaapNieuws logo" class="auth-logo">
-      <p>Welkom bij de #1<br>nieuws provider<br>van Nederland!</p>
-    </div>
-      </div>
+            <div class="auth-intro">
+                <span class="eyebrow">Account</span>
+                <h1 id="login-title">Welkom bij JaapNews</h1>
+                <p>Log in om verder te lezen, reacties te plaatsen of als journalist artikelen te maken.</p>
+            </div>
 
-    <div class="auth-form">
-      <label for="email">E-mailadres</label>
-      <input type="email" id="email" placeholder="Vul uw e-mail adres in">
+            <form class="auth-form">
+                <div class="field-group">
+                    <label for="email">E-mailadres</label>
+                    <input type="email" id="email" placeholder="naam@voorbeeld.nl">
+                </div>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Vul uw wachtwoord in">
+                <div class="field-group">
+                    <label for="password">Wachtwoord</label>
+                    <input type="password" id="password" placeholder="Uw wachtwoord">
+                </div>
 
-      <div class="auth-links">
-      <a href="forgot-password.html" class="forgot-password">Wachtwoord vergeten?</a>
-      <a href="../index.html?role=journalist" class="journalist-login">Log in als journalist</a>
-      </div>
+                <div class="auth-links">
+                    <a href="forgot-password.html" class="forgot-password">Wachtwoord vergeten?</a>
+                    <a href="../index.html?role=journalist" class="journalist-login">Log in als journalist</a>
+                </div>
 
-      <a href="../index.html" class="btn btn-primary">Log in</a>
-      <a href="../index.html" class="btn btn-secondary">Register</a>
-    </div>
+                <div class="auth-actions">
+                    <a href="../index.html" class="btn btn-primary">Log in</a>
+                    <a href="../index.html" class="btn btn-secondary">Registreer</a>
+                </div>
+            </form>
 
-  </section>
+            <a href="../index.html" class="back-home">Terug naar het nieuws</a>
+        </div>
+
+        <aside class="auth-news-panel" aria-label="JaapNews voordelen">
+            <span class="eyebrow">Vandaag</span>
+            <h2>Blijf bij met lokaal en landelijk nieuws.</h2>
+            <ul>
+                <li>Korte updates zonder gedoe</li>
+                <li>Regioverhalen overzichtelijk bij elkaar</li>
+                <li>Voor journalisten direct naar de redactie</li>
+            </ul>
+        </aside>
+    </section>
 </main>
 
 </body>
+
 </html>
