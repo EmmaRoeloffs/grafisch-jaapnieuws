@@ -294,6 +294,7 @@ site-footer {
 .create-btn,
 .back-btn,
 .btn,
+.search-submit,
 .editor-status {
     display: grid;
     place-items: center;
@@ -913,6 +914,15 @@ site-footer {
     border-radius: 0;
 }
 
+.search-submit {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
 .search-section {
     gap: 12px;
     padding: 16px;
@@ -925,6 +935,11 @@ site-footer {
 
 .search-title strong {
     color: var(--text);
+}
+
+.empty-results {
+    color: var(--title);
+    font-weight: 700;
 }
 
 .popular-list,
