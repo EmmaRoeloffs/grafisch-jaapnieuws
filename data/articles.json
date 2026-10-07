@@ -1,0 +1,36 @@
+[
+    {
+        "id": "auto-te-water-julianasluis-gouda",
+        "title": "Auto te water bij Julianasluis in Gouda, slachtoffer naar ziekenhuis",
+        "shortTitle": "Auto te water bij Julianasluis in Gouda",
+        "deck": "Een auto belandde vanochtend in het water bij de Julianasluis. Een slachtoffer is door hulpdiensten uit het water gehaald en naar het ziekenhuis gebracht.",
+        "summary": "Hulpdiensten rukten vanochtend uit nadat een auto naast de brug in het water terechtkwam.",
+        "category": "Regio Gouda",
+        "label": "Vandaag",
+        "tags": ["Gouda", "Regio", "Nieuws", "Ongeval", "Julianasluis"],
+        "image": "images/AutoTerWatere.png",
+        "imageAlt": "Auto te water",
+        "body": [
+            "Bij de Julianasluis in Gouda is vanmorgen een auto in het water beland. Hulpdiensten hebben iemand uit het water gehaald en met spoed naar het ziekenhuis gebracht.",
+            "De auto kwam rond 09.30 uur naast de brug terecht en zonk meteen. Duikers van de brandweer hebben gezocht of er nog meer slachtoffers waren, maar die zijn niet gevonden.",
+            "Hoe de auto in het water kon belanden, is nog niet bekend. Daar doet de politie onderzoek naar."
+        ]
+    },
+    {
+        "id": "werkende-armen-stijgen-weer",
+        "title": "Na jaren van daling stijgt het aantal werkende armen weer",
+        "shortTitle": "Aantal werkende armen stijgt weer",
+        "deck": "Steeds meer mensen met een baan hebben moeite om rond te komen. Vooral flexwerkers, zelfstandigen en huishoudens met lage lonen voelen de druk.",
+        "summary": "Onderzoekers zien dat vaste lasten en hogere prijzen steeds meer druk zetten op werkende huishoudens.",
+        "category": "Nederland",
+        "label": "Economie",
+        "tags": ["Nederland", "Economie", "Nieuws", "Armoede", "Werk"],
+        "image": "images/NaJarenDalen.png",
+        "imageAlt": "Werkende armen",
+        "body": [
+            "Het aantal werkende armen in Nederland is voor het eerst in jaren weer gestegen. Het gaat om mensen met een baan die toch moeite hebben om rond te komen en hun vaste lasten te betalen.",
+            "Vooral mensen met flexibele contracten en zelfstandigen zonder vast inkomen lopen meer risico om in armoede te belanden. Ook mensen die parttime werken of een laag loon hebben, behoren vaker tot deze groep.",
+            "De stijging komt onder meer door hogere kosten van levensonderhoud, zoals energie, huur en boodschappen. Onderzoekers noemen de ontwikkeling zorgelijk, omdat werk normaal gesproken juist bescherming biedt tegen armoede."
+        ]
+    }
+]

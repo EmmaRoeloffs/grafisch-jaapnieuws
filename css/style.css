@@ -225,6 +225,7 @@ site-footer {
 .brand-copy,
 .section-heading,
 .content-layout,
+.home-feed,
 .main-feed,
 .sidebar,
 .news-list,
@@ -509,6 +510,7 @@ site-footer {
 }
 
 .content-layout,
+.home-feed,
 .main-feed,
 .sidebar {
     gap: 22px;
@@ -707,9 +709,16 @@ site-footer {
 
 .forgot-password,
 .journalist-login,
-.back-home {
+.back-home,
+.auth-message {
     font-size: 14px;
     font-weight: 700;
+}
+
+.auth-message {
+    min-height: 20px;
+    color: var(--green);
+    text-align: center;
 }
 
 .journalist-login {
@@ -785,14 +794,20 @@ site-footer {
 
 .article-page {
     align-content: start;
-    gap: 20px;
+    gap: 24px;
+}
+
+[data-article] {
+    display: grid;
+    gap: 28px;
+    width: 100%;
 }
 
 .article-content {
-    gap: 18px;
+    gap: 22px;
     width: min(100%, 760px);
     margin: 0 auto;
-    padding: 18px;
+    padding: clamp(20px, 4vw, 30px);
 }
 
 .article-header {
@@ -815,7 +830,7 @@ site-footer {
 }
 
 .article-body {
-    gap: 14px;
+    gap: 18px;
 }
 
 .article-body p {
@@ -831,14 +846,15 @@ site-footer {
 }
 
 .comments h2 {
-    padding: 10px 14px;
+    padding: 14px 18px;
     background: var(--green-action);
     color: var(--white);
     font-size: 15px;
+    letter-spacing: 0;
 }
 
 .comment {
-    padding: 14px;
+    padding: 16px 18px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -854,18 +870,52 @@ site-footer {
 }
 
 .comment-field {
-    display: block;
-    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 112px;
+    gap: 12px;
+    align-items: center;
+    padding: 18px;
+    background: #fbfbfb;
 }
 
 .comments input {
     display: block;
     width: 100%;
-    height: 38px;
-    padding: 0 14px;
+    height: 44px;
+    padding: 0 16px;
     border: 1px solid var(--border);
     border-radius: 999px;
+    background: var(--white);
     outline: none;
+}
+
+.comment-submit {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    min-height: 44px;
+    height: 44px;
+    margin-bottom: 0;
+    padding: 0 16px;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.comment-submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.comment-message {
+    grid-column: 1 / -1;
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.comment-message a {
+    color: var(--link-blue);
+    text-decoration: underline;
 }
 
 .article-ad {
@@ -874,7 +924,18 @@ site-footer {
     margin: 0 auto;
     object-fit: cover;
     object-position: 0 0;
+    border-radius: 8px;
     box-shadow: var(--small-shadow);
+}
+
+@media (max-width: 520px) {
+    .comment-field {
+        grid-template-columns: 1fr;
+    }
+
+    .comment-submit {
+        display: none;
+    }
 }
 
 .search-page {
@@ -1296,6 +1357,10 @@ site-footer {
 
     .article-page {
         gap: 24px;
+    }
+
+    [data-article] {
+        gap: 34px;
     }
 
     .article-content,

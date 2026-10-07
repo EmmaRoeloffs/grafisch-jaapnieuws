@@ -8,6 +8,7 @@
 
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/auth.js" defer></script>
 </head>
 
 <body>
@@ -29,25 +30,27 @@
                 <p>Log in om verder te lezen, reacties te plaatsen of als journalist artikelen te maken.</p>
             </div>
 
-            <form class="auth-form">
+            <form class="auth-form" data-login-form>
                 <div class="field-group">
                     <label for="email">E-mailadres</label>
-                    <input type="email" id="email" placeholder="naam@voorbeeld.nl">
+                    <input type="email" id="email" placeholder="naam@voorbeeld.nl" required>
                 </div>
 
                 <div class="field-group">
                     <label for="password">Wachtwoord</label>
-                    <input type="password" id="password" placeholder="Uw wachtwoord">
+                    <input type="password" id="password" placeholder="Uw wachtwoord" required>
                 </div>
 
                 <div class="auth-links">
                     <a href="forgot-password.html" class="forgot-password">Wachtwoord vergeten?</a>
-                    <a href="../index.html?role=journalist" class="journalist-login">Log in als journalist</a>
+                    <a href="../index.html" class="journalist-login" data-journalist-login>Log in als journalist</a>
                 </div>
 
+                <p class="auth-message" data-auth-message aria-live="polite"></p>
+
                 <div class="auth-actions">
-                    <a href="../index.html" class="btn btn-primary">Log in</a>
-                    <a href="../index.html" class="btn btn-secondary">Registreer</a>
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                    <button type="button" class="btn btn-secondary" data-register>Registreer</button>
                 </div>
             </form>
 

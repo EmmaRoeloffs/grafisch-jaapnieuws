@@ -9,6 +9,7 @@
     <link rel="icon" href="./images/LOGO.png">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/layout.js" defer></script>
+    <script src="./js/home.js" defer></script>
 </head>
 
 <body>
@@ -23,26 +24,9 @@
                 <h1 id="latest-title">Vandaag belangrijk</h1>
             </div>
 
-            <a href="pages/Article1.html" class="news-card lead-story">
-                <img src="images/AutoTerWatere.png" alt="Auto in water" class="news-image">
-                <div class="news-card-body">
-                    <p class="story-meta">Regio Gouda · Net binnen</p>
-                    <h2>Auto te water bij Julianasluis in Gouda, slachtoffer naar ziekenhuis</h2>
-                    <p>Hulpdiensten rukten vanochtend uit nadat een auto naast de brug in het water terechtkwam.</p>
-                </div>
-            </a>
-
-            <section class="news-list" aria-label="Meer nieuws">
-                <a href="pages/Article2.html" class="news-card">
-                    <img src="images/NaJarenDalen.png" alt="Werkende armen" class="news-image">
-                    <div class="news-card-body">
-                        <p class="story-meta">Nederland · Economie</p>
-                        <h2>Na jaren van daling stijgt het aantal werkende armen weer</h2>
-                        <p>Onderzoekers zien dat vaste lasten en hogere prijzen steeds meer druk zetten op werkende
-                            huishoudens.</p>
-                    </div>
-                </a>
-            </section>
+            <div class="home-feed" data-home-feed>
+                <p class="empty-results">Artikelen laden...</p>
+            </div>
         </section>
 
         <aside class="sidebar" aria-label="Zijbalk">
@@ -52,11 +36,7 @@
                     <h2>Nu populair</h2>
                 </div>
 
-                <ol class="trending-list">
-                    <li><a href="pages/Article1.html">Auto te water bij Julianasluis in Gouda</a></li>
-                    <li><a href="pages/Article2.html">Aantal werkende armen stijgt weer</a></li>
-                    <li><a href="pages/search-gouda.html">Alles over Gouda</a></li>
-                </ol>
+                <ol class="trending-list" data-trending-list></ol>
             </section>
 
             <aside class="ad-section" aria-label="Advertentie">

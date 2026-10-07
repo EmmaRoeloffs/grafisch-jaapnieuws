@@ -1,7 +1,9 @@
 const isPagesPath = window.location.pathname.replace(/\\/g, "/").includes("/pages/");
 const rootPath = isPagesPath ? ".." : ".";
 const params = new URLSearchParams(window.location.search);
-const isJournalist = params.get("role") === "journalist";
+const getCurrentUser = () => JSON.parse(localStorage.getItem("jaapNewsCurrentUser") || "null");
+const currentUser = getCurrentUser();
+const isJournalist = currentUser?.role === "journalist" || params.get("role") === "journalist";
 
 const withRole = (href) => {
     if (!isJournalist) {
@@ -17,7 +19,9 @@ class SiteHeader extends HTMLElement {
         const createLink = this.hasAttribute("show-create")
             ? `<a href="${withRole(`${rootPath}/pages/create-article.html`)}" class="create-btn ${isJournalist ? "" : "hidden"}" aria-label="Nieuw artikel maken">+</a>`
             : "";
-        const accountLabel = isJournalist ? "Log uit" : "Log in";
+        const accountLabel = currentUser || isJournalist ? "Log uit" : "Log in";
+        const accountHref = currentUser || isJournalist ? `${rootPath}/index.html` : `${rootPath}/pages/login.html`;
+        const accountAttributes = currentUser || isJournalist ? `data-logout` : "";
 
         this.innerHTML = `
             <header class="header">
@@ -43,14 +47,14 @@ class SiteHeader extends HTMLElement {
                         <a href="${withRole(`${rootPath}/pages/search.html`)}" class="search-btn" aria-label="Zoeken">
                             <img src="${rootPath}/images/search.png" alt="" class="search-icon">
                         </a>
-                        <a href="${rootPath}/pages/login.html" class="logout">${accountLabel}</a>
+                        <a href="${accountHref}" class="logout" ${accountAttributes}>${accountLabel}</a>
                     </nav>
                 </div>
 
                 <nav class="category-nav site-container" aria-label="Categorieen">
                     <a href="${withRole(`${rootPath}/index.html`)}">Laatste nieuws</a>
-                    <a href="${withRole(`${rootPath}/pages/search-gouda.html`)}">Regio</a>
-                    <a href="${withRole(`${rootPath}/pages/search-news.html`)}">Nederland</a>
+                    <a href="${withRole(`${rootPath}/pages/search.html?q=Regio`)}">Regio</a>
+                    <a href="${withRole(`${rootPath}/pages/search.html?q=Nieuws`)}">Nieuws</a>
                 </nav>
             </header>
         `;
@@ -82,6 +86,18 @@ class SiteFooter extends HTMLElement {
 
 customElements.define("site-header", SiteHeader);
 customElements.define("site-footer", SiteFooter);
+
+document.addEventListener("click", (event) => {
+    const logout = event.target.closest("[data-logout]");
+
+    if (!logout) {
+        return;
+    }
+
+    event.preventDefault();
+    localStorage.removeItem("jaapNewsCurrentUser");
+    window.location.href = `${rootPath}/index.html`;
+});
 
 const installImageFallbacks = () => {
     const fallbackTargets = document.querySelectorAll(".news-image, .article-image, .result-card img");

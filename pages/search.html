@@ -9,6 +9,7 @@
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/layout.js" defer></script>
+    <script src="../js/search.js" defer></script>
 </head>
 
 <body>
@@ -18,29 +19,35 @@
 
     <main class="search-page site-container">
         <div class="section-heading">
-            <span class="eyebrow">Zoeken</span>
-            <h1>Vind nieuws dat ertoe doet</h1>
+            <span class="eyebrow" data-search-prefix>Zoeken</span>
+            <h1 data-search-heading>Vind nieuws dat ertoe doet</h1>
         </div>
 
-        <div class="search-bar">
+        <form class="search-bar" data-search-form>
             <button class="back-btn" type="button" onclick="history.back()" aria-label="Vorige pagina"></button>
 
             <div class="search-box">
                 <label class="visually-hidden" for="search-input">Titel of trefwoord</label>
-                <input id="search-input" type="text" placeholder="Titel of trefwoord">
-                <a href="search-news.html" aria-label="Zoeken">
+                <input id="search-input" type="text" placeholder="Titel of trefwoord" data-search-input>
+                <button class="search-submit" type="submit" aria-label="Zoeken">
                     <img src="../images/search.png" alt="">
-                </a>
+                </button>
             </div>
-        </div>
+        </form>
 
-        <section class="search-section" aria-labelledby="popular-title">
+        <section class="search-section" aria-labelledby="popular-title" data-popular-searches>
             <h2 class="search-title" id="popular-title"><strong>Meest gezocht</strong></h2>
 
             <div class="popular-list">
-                <a href="search-gouda.html" class="popular-item">Gouda</a>
-                <a href="search-news.html" class="popular-item">Nieuws</a>
+                <a href="search.html?q=Gouda" class="popular-item">Gouda</a>
+                <a href="search.html?q=Nieuws" class="popular-item">Nieuws</a>
             </div>
+        </section>
+
+        <p class="search-title" data-search-title><strong>Alle artikelen</strong></p>
+
+        <section class="search-results" aria-label="Zoekresultaten" data-search-results>
+            <p class="empty-results">Artikelen laden...</p>
         </section>
     </main>
 
