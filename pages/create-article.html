@@ -9,6 +9,7 @@
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/layout.js" defer></script>
+    <script src="../js/create-article.js" defer></script>
 </head>
 
 <body>
@@ -31,7 +32,7 @@
             </header>
 
             <div class="create-layout">
-                <form class="create-form">
+                <form class="create-form" data-create-form>
                     <div class="editor-card">
                         <div class="editor-card-header">
                             <span class="eyebrow">Artikel</span>
@@ -41,27 +42,28 @@
                         <div class="field-group title-field">
                             <label for="article-title">Titel</label>
                             <input id="article-title" type="text"
-                                   placeholder="Bijvoorbeeld: Auto te water bij Julianasluis">
+                                   placeholder="Bijvoorbeeld: Auto te water bij Julianasluis" required>
                             <p class="field-help">Maak de titel concreet en actief.</p>
                         </div>
 
                         <div class="field-group">
                             <label for="article-summary">Korte intro</label>
-                            <input id="article-summary" type="text" placeholder="Vat het nieuws samen in een zin">
+                            <input id="article-summary" type="text" placeholder="Vat het nieuws samen in een zin" required>
                             <p class="field-help">Een goede intro vertelt meteen wat er is gebeurd en waarom het
                                 telt.</p>
                         </div>
 
                         <div class="field-group">
                             <label for="article-text">Artikeltekst</label>
-                            <textarea id="article-text" placeholder="Schrijf hier het volledige artikel"></textarea>
+                            <textarea id="article-text" placeholder="Schrijf hier het volledige artikel" required></textarea>
                             <p class="field-help">Begin met de kern, voeg daarna context en details toe.</p>
                         </div>
                     </div>
 
                     <div class="form-actions">
-                        <a href="../index.html?role=journalist" class="btn btn-primary">Maak artikel</a>
-                        <a href="../index.html?role=journalist" class="btn btn-secondary">Annuleren</a>
+                        <p class="create-message" data-create-message aria-live="polite"></p>
+                        <button type="submit" class="btn btn-primary">Maak artikel</button>
+                        <a href="../index.html" class="btn btn-secondary">Annuleren</a>
                     </div>
                 </form>
 
@@ -73,12 +75,12 @@
                         </div>
 
                         <div class="category-list">
-                            <button type="button">Sport</button>
-                            <button type="button">Cultuur</button>
-                            <button type="button">Regio</button>
-                            <button type="button">Ongeval</button>
-                            <button type="button">Weer</button>
-                            <button type="button">Politiek</button>
+                            <button type="button" data-category="Sport">Sport</button>
+                            <button type="button" data-category="Cultuur">Cultuur</button>
+                            <button type="button" data-category="Regio">Regio</button>
+                            <button type="button" data-category="Ongeval">Ongeval</button>
+                            <button type="button" data-category="Weer">Weer</button>
+                            <button type="button" data-category="Politiek">Politiek</button>
                         </div>
                     </section>
 
@@ -88,9 +90,10 @@
                             <h2>Beeld</h2>
                         </div>
 
-                        <button type="button" class="image-upload">
-                            <img src="../images/select-image.png" alt="">
-                            <span>Kies afbeelding</span>
+                        <input class="visually-hidden" id="article-image" type="file" accept="image/*" data-image-input>
+                        <button type="button" class="image-upload" data-image-button>
+                            <img src="../images/select-image.png" alt="" data-image-preview>
+                            <span data-image-label>Kies afbeelding</span>
                         </button>
                     </section>
 

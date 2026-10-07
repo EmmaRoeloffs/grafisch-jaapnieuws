@@ -2,8 +2,18 @@ const searchRootPath = window.location.pathname.replace(/\\/g, "/").includes("/p
 const searchParams = new URLSearchParams(window.location.search);
 const initialQuery = searchParams.get("q") || "";
 const searchIsJournalist = searchParams.get("role") === "journalist";
+const SEARCH_LOCAL_ARTICLES_KEY = "jaapNewsArticles";
 
 const searchPath = (path) => `${searchRootPath}/${path}`;
+const getSearchLocalArticles = () => JSON.parse(localStorage.getItem(SEARCH_LOCAL_ARTICLES_KEY) || "[]");
+const searchImagePath = (path) => path.startsWith("data:") ? path : searchPath(path);
+
+const escapeSearchHtml = (value) => String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 const keepRole = (url) => {
     if (!searchIsJournalist) {
@@ -55,10 +65,10 @@ const renderResults = (articles, query) => {
     results.innerHTML = shownArticles.length
         ? shownArticles.map((article) => `
             <a href="${articleUrl(article)}" class="result-card">
-                <img src="${searchPath(article.image)}" alt="${article.imageAlt}">
+                <img src="${searchImagePath(article.image)}" alt="${escapeSearchHtml(article.imageAlt)}">
                 <div>
-                    <p class="story-meta">${article.category}</p>
-                    <h2>${article.title}</h2>
+                    <p class="story-meta">${escapeSearchHtml(article.category)}</p>
+                    <h2>${escapeSearchHtml(article.title)}</h2>
                 </div>
             </a>
         `).join("")
@@ -99,7 +109,7 @@ fetch(searchPath("data/articles.json"))
 
         return response.json();
     })
-    .then(setupSearchForm)
+    .then((articles) => setupSearchForm(getSearchLocalArticles().concat(articles)))
     .catch(() => {
         const results = document.querySelector("[data-search-results]");
         results.innerHTML = `<p class="empty-results">Start de site via een lokale webserver zodat de zoekdata geladen kan worden.</p>`;

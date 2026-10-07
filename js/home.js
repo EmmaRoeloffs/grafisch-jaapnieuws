@@ -1,7 +1,17 @@
 const homeParams = new URLSearchParams(window.location.search);
 const homeIsJournalist = homeParams.get("role") === "journalist";
+const HOME_LOCAL_ARTICLES_KEY = "jaapNewsArticles";
 
 const homePath = (path) => `./${path}`;
+const getHomeLocalArticles = () => JSON.parse(localStorage.getItem(HOME_LOCAL_ARTICLES_KEY) || "[]");
+const homeImagePath = (path) => path.startsWith("data:") ? path : homePath(path);
+
+const escapeHomeHtml = (value) => String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 
 const keepHomeRole = (url) => {
     if (!homeIsJournalist) {
@@ -15,11 +25,11 @@ const articleLink = (article) => keepHomeRole(`pages/article.html?id=${encodeURI
 
 const renderCard = (article, isLead = false) => `
     <a href="${articleLink(article)}" class="news-card${isLead ? " lead-story" : ""}">
-        <img src="${homePath(article.image)}" alt="${article.imageAlt}" class="news-image">
+        <img src="${homeImagePath(article.image)}" alt="${escapeHomeHtml(article.imageAlt)}" class="news-image">
         <div class="news-card-body">
-            <p class="story-meta">${article.category} &middot; ${article.label}</p>
-            <h2>${article.title}</h2>
-            <p>${article.summary}</p>
+            <p class="story-meta">${escapeHomeHtml(article.category)} &middot; ${escapeHomeHtml(article.label)}</p>
+            <h2>${escapeHomeHtml(article.title)}</h2>
+            <p>${escapeHomeHtml(article.summary)}</p>
         </div>
     </a>
 `;
@@ -45,7 +55,7 @@ const renderHome = (articles) => {
     `;
 
     trending.innerHTML = articles.map((article) => `
-        <li><a href="${articleLink(article)}">${article.shortTitle || article.title}</a></li>
+        <li><a href="${articleLink(article)}">${escapeHomeHtml(article.shortTitle || article.title)}</a></li>
     `).join("");
 
     if (typeof installImageFallbacks === "function") {
@@ -61,7 +71,7 @@ fetch("data/articles.json")
 
         return response.json();
     })
-    .then(renderHome)
+    .then((articles) => renderHome(getHomeLocalArticles().concat(articles)))
     .catch(() => {
         const feed = document.querySelector("[data-home-feed]");
 
