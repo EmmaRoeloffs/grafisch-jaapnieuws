@@ -145,6 +145,10 @@ const renderArticle = (article, jsonComments) => {
         installImageFallbacks();
     }
 
+    if (typeof window.installDonationPopup === "function") {
+        window.installDonationPopup();
+    }
+
     renderComments(article, jsonComments.concat(getLocalComments()));
     setupCommentForm(article, jsonComments);
 };

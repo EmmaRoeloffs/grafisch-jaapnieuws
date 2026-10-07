@@ -87,6 +87,31 @@ class SiteFooter extends HTMLElement {
 customElements.define("site-header", SiteHeader);
 customElements.define("site-footer", SiteFooter);
 
+const installDonationPopup = () => {
+    const isArticlePage = Boolean(document.querySelector(".article-page"));
+
+    if (!isArticlePage || document.querySelector(".donation-popup")) {
+        return;
+    }
+
+    const popup = document.createElement("aside");
+    popup.className = "donation-popup";
+    popup.setAttribute("aria-label", "Donatie oproep");
+    popup.innerHTML = `
+        <button class="donation-close" type="button" aria-label="Sluit donatie pop-up">&times;</button>
+        <p>Wilt u ons verder supporten?<br>Doneer hier!</p>
+        <a href="https://www.freepressunlimited.org/en/form/donation" class="donation-button">Doneren</a>
+    `;
+
+    popup.querySelector(".donation-close").addEventListener("click", () => {
+        popup.remove();
+    });
+
+    document.body.append(popup);
+};
+
+window.installDonationPopup = installDonationPopup;
+
 document.addEventListener("click", (event) => {
     const logout = event.target.closest("[data-logout]");
 
@@ -121,7 +146,11 @@ const installImageFallbacks = () => {
 };
 
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", installImageFallbacks);
+    document.addEventListener("DOMContentLoaded", () => {
+        installImageFallbacks();
+        installDonationPopup();
+    });
 } else {
     installImageFallbacks();
+    installDonationPopup();
 }

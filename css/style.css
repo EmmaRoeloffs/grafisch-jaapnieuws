@@ -666,6 +666,82 @@ site-footer {
     display: none;
 }
 
+.donation-popup {
+    position: fixed;
+    z-index: 1000;
+    right: 12px;
+    bottom: 14px;
+    left: 12px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 14px;
+    align-items: center;
+    width: auto;
+    padding: 11px 14px;
+    border-radius: 6px;
+    background: #456d39;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+    color: var(--white);
+    animation: donation-pop-in 0.34s ease-out both;
+}
+
+.donation-popup p {
+    grid-column: 1 / -1;
+    padding-right: 18px;
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+.donation-button {
+    grid-column: 2;
+    justify-self: end;
+    min-width: 94px;
+    padding: 6px 12px;
+    border-radius: 2px;
+    background: #d1bf18;
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.donation-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: grid;
+    width: 14px;
+    height: 14px;
+    place-items: center;
+    border: 0;
+    border-radius: 2px;
+    background: #ff1f1f;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+@keyframes donation-pop-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .donation-popup {
+        animation: none;
+    }
+}
+
 .account-page {
     align-content: start;
 }
@@ -1435,6 +1511,16 @@ site-footer {
 
     .account-article-actions {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 521px) {
+    .donation-popup {
+        top: 92px;
+        right: auto;
+        bottom: auto;
+        left: clamp(12px, 4vw, 28px);
+        width: min(calc(100vw - 24px), 300px);
     }
 }
 
