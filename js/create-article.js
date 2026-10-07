@@ -106,6 +106,8 @@ document.querySelector("[data-create-form]").addEventListener("submit", (event) 
         imageAlt: title,
         body: paragraphs,
         author: user?.name || user?.email || "Redactie",
+        authorEmail: user?.email || "",
+        authorRole: user?.role || "journalist",
         createdAt: new Date().toISOString()
     };
 

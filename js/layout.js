@@ -76,7 +76,7 @@ class SiteFooter extends HTMLElement {
                     <nav class="footer-links" aria-label="Footer navigatie">
                         <a href="${withRole(`${rootPath}/index.html`)}">Home</a>
                         <a href="${withRole(`${rootPath}/pages/search.html`)}">Zoeken</a>
-                        <a href="${rootPath}/pages/login.html">Account</a>
+                        <a href="${withRole(`${rootPath}/pages/account.html`)}">Account</a>
                     </nav>
                 </div>
             </footer>
@@ -100,7 +100,7 @@ document.addEventListener("click", (event) => {
 });
 
 const installImageFallbacks = () => {
-    const fallbackTargets = document.querySelectorAll(".news-image, .article-image, .result-card img");
+    const fallbackTargets = document.querySelectorAll(".news-image, .article-image, .result-card img, .account-article img");
 
     fallbackTargets.forEach((image) => {
         const showFallback = () => {

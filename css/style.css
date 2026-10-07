@@ -114,6 +114,8 @@ site-footer {
 .footer,
 .news-card,
 .side-panel,
+.account-card,
+.account-article,
 .auth-card,
 .auth-news-panel,
 .article-content,
@@ -144,6 +146,8 @@ site-footer {
 
 .news-card,
 .side-panel,
+.account-card,
+.account-article,
 .article-content,
 .comments,
 .popular-item,
@@ -226,6 +230,14 @@ site-footer {
 .section-heading,
 .content-layout,
 .home-feed,
+.account-page,
+.account-shell,
+.account-grid,
+.account-card,
+.account-details,
+.account-articles,
+.account-article-copy,
+.account-article-actions,
 .main-feed,
 .sidebar,
 .news-list,
@@ -431,6 +443,10 @@ site-footer {
     background: var(--button-dark);
 }
 
+.btn-danger {
+    background: #b73535;
+}
+
 .create-btn {
     width: 40px;
     height: 40px;
@@ -534,6 +550,22 @@ site-footer {
     font-size: 22px;
 }
 
+.news-card,
+.news-card-body,
+.result-card,
+.account-article,
+.account-article-copy {
+    min-width: 0;
+}
+
+.news-card h2,
+.news-card p,
+.result-card h2,
+.account-article-copy h2,
+.account-article-copy p {
+    overflow-wrap: anywhere;
+}
+
 .lead-story {
     padding: 0;
     overflow: hidden;
@@ -632,6 +664,105 @@ site-footer {
 
 .ad-laptop {
     display: none;
+}
+
+.account-page {
+    align-content: start;
+}
+
+.account-shell {
+    gap: 20px;
+    width: min(100%, 980px);
+    margin: 0 auto;
+}
+
+.account-grid {
+    gap: 18px;
+    align-items: start;
+}
+
+.account-card {
+    gap: 16px;
+    padding: clamp(18px, 4vw, 26px);
+    box-shadow: var(--small-shadow);
+}
+
+.account-card h2 {
+    color: var(--green);
+    font-size: 26px;
+}
+
+.account-card-heading {
+    display: grid;
+    gap: 5px;
+}
+
+.account-details {
+    gap: 12px;
+}
+
+.account-details div {
+    display: grid;
+    gap: 4px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.account-details dt {
+    color: var(--text-soft);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.account-details dd {
+    color: var(--title);
+    font-weight: 700;
+}
+
+.account-action {
+    max-width: 220px;
+}
+
+.account-articles {
+    gap: 14px;
+}
+
+.account-article {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+    padding: 16px;
+    box-shadow: none;
+}
+
+.account-article img,
+.account-article .image-fallback {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.account-article-copy {
+    gap: 10px;
+    padding-top: 4px;
+}
+
+.account-article-copy h2 {
+    color: var(--green);
+    font-size: 18px;
+}
+
+.account-article-actions {
+    grid-template-columns: repeat(2, minmax(0, 140px));
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.account-article-actions .btn {
+    max-width: none;
+    min-height: 38px;
+    font-size: 14px;
 }
 
 .auth-page {
@@ -801,17 +932,22 @@ site-footer {
     display: grid;
     gap: 28px;
     width: 100%;
+    min-width: 0;
+    justify-items: center;
 }
 
 .article-content {
     gap: 22px;
     width: min(100%, 760px);
+    max-width: 100%;
+    min-width: 0;
     margin: 0 auto;
     padding: clamp(20px, 4vw, 30px);
 }
 
 .article-header {
     gap: 10px;
+    min-width: 0;
 }
 
 .article-header h1 {
@@ -825,12 +961,22 @@ site-footer {
     line-height: 1.45;
 }
 
+.article-header h1,
+.article-deck,
+.article-body p,
+.comment h3,
+.comment p {
+    overflow-wrap: anywhere;
+}
+
 .article-image {
+    max-width: 100%;
     aspect-ratio: 16 / 9;
 }
 
 .article-body {
     gap: 18px;
+    min-width: 0;
 }
 
 .article-body p {
@@ -841,6 +987,8 @@ site-footer {
 
 .comments {
     width: min(100%, 760px);
+    max-width: 100%;
+    min-width: 0;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -920,6 +1068,7 @@ site-footer {
 
 .article-ad {
     width: min(100%, 760px);
+    max-width: 100%;
     max-height: 360px;
     margin: 0 auto;
     object-fit: cover;
@@ -1272,6 +1421,20 @@ site-footer {
     .form-actions {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         justify-items: stretch;
+    }
+
+    .account-grid {
+        grid-template-columns: 300px minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 620px) {
+    .account-article {
+        grid-template-columns: 1fr;
+    }
+
+    .account-article-actions {
+        grid-template-columns: 1fr;
     }
 }
 
