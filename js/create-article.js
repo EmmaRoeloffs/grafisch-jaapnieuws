@@ -1,9 +1,17 @@
 const LOCAL_ARTICLES_KEY = "jaapNewsArticles";
-const CURRENT_USER_KEY = "jaapNewsCurrentUser";
 
 const getLocalArticles = () => JSON.parse(localStorage.getItem(LOCAL_ARTICLES_KEY) || "[]");
 const saveLocalArticles = (articles) => localStorage.setItem(LOCAL_ARTICLES_KEY, JSON.stringify(articles));
-const getCreateUser = () => JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || "null");
+
+const syncEditorAccess = () => {
+    const user = JaapAuth.requireJournalist();
+    document.querySelector("[data-journalist-content]").hidden = !user;
+    return user;
+};
+
+syncEditorAccess();
+window.addEventListener("pageshow", syncEditorAccess);
+window.addEventListener("storage", syncEditorAccess);
 
 const slugify = (value) => value
     .toLowerCase()
@@ -43,7 +51,7 @@ imageInput.addEventListener("change", () => {
     }
 
     if (file.size > 1500000) {
-        showCreateMessage("Kies een afbeelding kleiner dan 1,5 MB, anders past hij niet goed in lokale opslag.");
+        showCreateMessage("Kies een afbeelding kleiner dan 1,5 MB.");
         return;
     }
 
@@ -71,6 +79,11 @@ categoryButtons.forEach((button) => {
 document.querySelector("[data-create-form]").addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const user = syncEditorAccess();
+    if (!user) {
+        return;
+    }
+
     const title = document.querySelector("#article-title").value.trim();
     const summary = document.querySelector("#article-summary").value.trim();
     const text = document.querySelector("#article-text").value.trim();
@@ -85,7 +98,7 @@ document.querySelector("[data-create-form]").addEventListener("submit", (event) 
         return;
     }
 
-    const user = getCreateUser();
+
     const idBase = slugify(title) || "nieuw-artikel";
     const id = `${idBase}-${Date.now()}`;
     const paragraphs = text
@@ -105,9 +118,9 @@ document.querySelector("[data-create-form]").addEventListener("submit", (event) 
         image: selectedImage || "images/select-image.png",
         imageAlt: title,
         body: paragraphs,
-        author: user?.name || user?.email || "Redactie",
-        authorEmail: user?.email || "",
-        authorRole: user?.role || "journalist",
+        author: user.name || user.email,
+        authorEmail: user.email,
+        authorRole: user.role,
         createdAt: new Date().toISOString()
     };
 

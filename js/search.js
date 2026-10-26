@@ -1,7 +1,6 @@
 const searchRootPath = window.location.pathname.replace(/\\/g, "/").includes("/pages/") ? ".." : ".";
 const searchParams = new URLSearchParams(window.location.search);
 const initialQuery = searchParams.get("q") || "";
-const searchIsJournalist = searchParams.get("role") === "journalist";
 const SEARCH_LOCAL_ARTICLES_KEY = "jaapNewsArticles";
 
 const searchPath = (path) => `${searchRootPath}/${path}`;
@@ -15,17 +14,9 @@ const escapeSearchHtml = (value) => String(value)
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 
-const keepRole = (url) => {
-    if (!searchIsJournalist) {
-        return url;
-    }
-
-    return `${url}${url.includes("?") ? "&" : "?"}role=journalist`;
-};
-
 const normalize = (value) => value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-const articleUrl = (article) => keepRole(`article.html?id=${encodeURIComponent(article.id)}`);
+const articleUrl = (article) => `article.html?id=${encodeURIComponent(article.id)}`;
 
 const matchesQuery = (article, query) => {
     if (!query) {
@@ -95,7 +86,7 @@ const setupSearchForm = (articles) => {
             ? `search.html?q=${encodeURIComponent(query)}`
             : "search.html";
 
-        window.location.href = keepRole(nextUrl);
+        window.location.href = nextUrl;
     });
 
     renderResults(articles, initialQuery.trim());

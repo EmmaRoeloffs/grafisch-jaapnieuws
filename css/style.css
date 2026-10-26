@@ -1264,6 +1264,10 @@ site-footer {
     padding: clamp(18px, 4vw, 34px) 16px;
 }
 
+[data-journalist-content][hidden] {
+    display: none;
+}
+
 .create-shell {
     gap: 18px;
     width: min(100%, 1120px);

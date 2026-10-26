@@ -3,13 +3,12 @@ const articleParams = new URLSearchParams(window.location.search);
 const articleId = articleParams.get("id");
 const LOCAL_COMMENTS_KEY = "jaapNewsComments";
 const LOCAL_ARTICLES_KEY = "jaapNewsArticles";
-const CURRENT_USER_KEY = "jaapNewsCurrentUser";
 
 const articlePath = (path) => `${articleRootPath}/${path}`;
 const getLocalComments = () => JSON.parse(localStorage.getItem(LOCAL_COMMENTS_KEY) || "[]");
 const getLocalArticles = () => JSON.parse(localStorage.getItem(LOCAL_ARTICLES_KEY) || "[]");
 const saveLocalComments = (comments) => localStorage.setItem(LOCAL_COMMENTS_KEY, JSON.stringify(comments));
-const getArticleUser = () => JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || "null");
+const getArticleUser = () => JaapAuth.getCurrentUser();
 const articleImagePath = (path) => path.startsWith("data:") ? path : articlePath(path);
 
 const escapeHtml = (value) => String(value)

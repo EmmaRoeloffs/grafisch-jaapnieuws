@@ -2,7 +2,7 @@ const ACCOUNT_USER_KEY = "jaapNewsCurrentUser";
 const ACCOUNT_ARTICLES_KEY = "jaapNewsArticles";
 const ACCOUNT_COMMENTS_KEY = "jaapNewsComments";
 
-const getAccountUser = () => JSON.parse(localStorage.getItem(ACCOUNT_USER_KEY) || "null");
+const getAccountUser = () => JaapAuth.getCurrentUser();
 const getAccountArticles = () => JSON.parse(localStorage.getItem(ACCOUNT_ARTICLES_KEY) || "[]");
 const saveAccountArticles = (articles) => localStorage.setItem(ACCOUNT_ARTICLES_KEY, JSON.stringify(articles));
 const getAccountComments = () => JSON.parse(localStorage.getItem(ACCOUNT_COMMENTS_KEY) || "[]");
@@ -119,6 +119,13 @@ document.addEventListener("click", (event) => {
     }
 
     const articleId = deleteButton.dataset.deleteArticle;
+    const user = getAccountUser();
+    const article = getAccountArticles().find((item) => item.id === articleId);
+    if (user?.role !== "journalist" || !article || !ownsArticle(article, user)) {
+        renderAccount();
+        return;
+    }
+
     const remainingArticles = getAccountArticles().filter((article) => article.id !== articleId);
     const remainingComments = getAccountComments().filter((comment) => comment.articleId !== articleId);
 

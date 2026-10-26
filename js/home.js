@@ -1,5 +1,3 @@
-const homeParams = new URLSearchParams(window.location.search);
-const homeIsJournalist = homeParams.get("role") === "journalist";
 const HOME_LOCAL_ARTICLES_KEY = "jaapNewsArticles";
 
 const homePath = (path) => `./${path}`;
@@ -13,15 +11,7 @@ const escapeHomeHtml = (value) => String(value)
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
 
-const keepHomeRole = (url) => {
-    if (!homeIsJournalist) {
-        return url;
-    }
-
-    return `${url}${url.includes("?") ? "&" : "?"}role=journalist`;
-};
-
-const articleLink = (article) => keepHomeRole(`pages/article.html?id=${encodeURIComponent(article.id)}`);
+const articleLink = (article) => `pages/article.html?id=${encodeURIComponent(article.id)}`;
 
 const renderCard = (article, isLead = false) => `
     <a href="${articleLink(article)}" class="news-card${isLead ? " lead-story" : ""}">

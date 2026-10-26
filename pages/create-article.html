@@ -8,6 +8,7 @@
 
     <link rel="icon" href="../images/LOGO.png">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/session.js" defer></script>
     <script src="../js/layout.js" defer></script>
     <script src="../js/create-article.js" defer></script>
 </head>
@@ -17,7 +18,7 @@
 <div class="page-layout">
     <site-header></site-header>
 
-    <main class="create-page">
+    <main class="create-page" data-journalist-content hidden>
         <section class="create-shell" aria-labelledby="create-title">
             <header class="create-header">
                 <button class="back-btn" type="button" onclick="history.back()" aria-label="Vorige pagina"></button>

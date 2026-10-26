@@ -4,11 +4,24 @@ const CURRENT_USER_KEY = "jaapNewsCurrentUser";
 const getUsers = () => JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
 const saveUsers = (users) => localStorage.setItem(USERS_KEY, JSON.stringify(users));
 
+// Reserve this demo account
+const journalistAccount = {
+    email: JaapAuth.journalistEmail,
+    password: "password123",
+    name: "Journalist",
+    role: "journalist"
+};
+saveUsers([
+    ...getUsers().filter((user) => user.email !== journalistAccount.email),
+    journalistAccount
+]);
+
 const setCurrentUser = (user) => {
     localStorage.setItem(CURRENT_USER_KEY, JSON.stringify({
         email: user.email,
         name: user.name,
-        role: user.role
+        role: user.role,
+        sessionVersion: JaapAuth.sessionVersion
     }));
 };
 
@@ -70,18 +83,5 @@ document.querySelector("[data-register]").addEventListener("click", () => {
     users.push(formUser);
     saveUsers(users);
     setCurrentUser(formUser);
-    goHome();
-});
-
-document.querySelector("[data-journalist-login]").addEventListener("click", (event) => {
-    event.preventDefault();
-
-    const journalist = {
-        email: "journalist@jaapnews.nl",
-        name: "Journalist",
-        role: "journalist"
-    };
-
-    setCurrentUser(journalist);
     goHome();
 });

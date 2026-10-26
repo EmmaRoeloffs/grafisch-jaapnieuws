@@ -1,27 +1,17 @@
 const isPagesPath = window.location.pathname.replace(/\\/g, "/").includes("/pages/");
 const rootPath = isPagesPath ? ".." : ".";
-const params = new URLSearchParams(window.location.search);
-const getCurrentUser = () => JSON.parse(localStorage.getItem("jaapNewsCurrentUser") || "null");
+const getCurrentUser = () => JaapAuth.getCurrentUser();
 const currentUser = getCurrentUser();
-const isJournalist = currentUser?.role === "journalist" || params.get("role") === "journalist";
-
-const withRole = (href) => {
-    if (!isJournalist) {
-        return href;
-    }
-
-    const separator = href.includes("?") ? "&" : "?";
-    return `${href}${separator}role=journalist`;
-};
+const isJournalist = currentUser?.role === "journalist";
 
 class SiteHeader extends HTMLElement {
     connectedCallback() {
-        const createLink = this.hasAttribute("show-create")
-            ? `<a href="${withRole(`${rootPath}/pages/create-article.html`)}" class="create-btn ${isJournalist ? "" : "hidden"}" aria-label="Nieuw artikel maken">+</a>`
+        const createLink = this.hasAttribute("show-create") && isJournalist
+            ? `<a href="${rootPath}/pages/create-article.html" class="create-btn" aria-label="Nieuw artikel maken">+</a>`
             : "";
-        const accountLabel = currentUser || isJournalist ? "Log uit" : "Log in";
-        const accountHref = currentUser || isJournalist ? `${rootPath}/index.html` : `${rootPath}/pages/login.html`;
-        const accountAttributes = currentUser || isJournalist ? `data-logout` : "";
+        const accountLabel = currentUser ? "Log uit" : "Log in";
+        const accountHref = currentUser ? `${rootPath}/index.html` : `${rootPath}/pages/login.html`;
+        const accountAttributes = currentUser ? `data-logout` : "";
 
         this.innerHTML = `
             <header class="header">
@@ -32,7 +22,7 @@ class SiteHeader extends HTMLElement {
 
                 <div class="header-inner site-container">
                     <div class="brand-wrap">
-                        <a href="${withRole(`${rootPath}/index.html`)}" class="logo-link" aria-label="Ga naar de homepage">
+                        <a href="${rootPath}/index.html" class="logo-link" aria-label="Ga naar de homepage">
                             <img src="${rootPath}/images/LOGO.png" alt="JaapNews logo" class="logo">
                         </a>
 
@@ -44,7 +34,7 @@ class SiteHeader extends HTMLElement {
 
                     <nav class="header-right" aria-label="Hoofdnavigatie">
                         ${createLink}
-                        <a href="${withRole(`${rootPath}/pages/search.html`)}" class="search-btn" aria-label="Zoeken">
+                        <a href="${rootPath}/pages/search.html" class="search-btn" aria-label="Zoeken">
                             <img src="${rootPath}/images/search.png" alt="" class="search-icon">
                         </a>
                         <a href="${accountHref}" class="logout" ${accountAttributes}>${accountLabel}</a>
@@ -52,9 +42,9 @@ class SiteHeader extends HTMLElement {
                 </div>
 
                 <nav class="category-nav site-container" aria-label="Categorieen">
-                    <a href="${withRole(`${rootPath}/index.html`)}">Laatste nieuws</a>
-                    <a href="${withRole(`${rootPath}/pages/search.html?q=Regio`)}">Regio</a>
-                    <a href="${withRole(`${rootPath}/pages/search.html?q=Nieuws`)}">Nieuws</a>
+                    <a href="${rootPath}/index.html">Laatste nieuws</a>
+                    <a href="${rootPath}/pages/search.html?q=Regio">Regio</a>
+                    <a href="${rootPath}/pages/search.html?q=Nieuws">Nieuws</a>
                 </nav>
             </header>
         `;
@@ -67,16 +57,16 @@ class SiteFooter extends HTMLElement {
             <footer class="footer">
                 <div class="footer-inner site-container">
                     <div>
-                        <a href="${withRole(`${rootPath}/index.html`)}" class="footer-brand" aria-label="JaapNews homepage">
+                        <a href="${rootPath}/index.html" class="footer-brand" aria-label="JaapNews homepage">
                             <span class="jaap">Jaap</span><span class="news">News</span>
                         </a>
                         <p>De nieuwsprovider voor korte updates, lokale verhalen en het belangrijkste nieuws van de dag.</p>
                     </div>
 
                     <nav class="footer-links" aria-label="Footer navigatie">
-                        <a href="${withRole(`${rootPath}/index.html`)}">Home</a>
-                        <a href="${withRole(`${rootPath}/pages/search.html`)}">Zoeken</a>
-                        <a href="${withRole(`${rootPath}/pages/account.html`)}">Account</a>
+                        <a href="${rootPath}/index.html">Home</a>
+                        <a href="${rootPath}/pages/search.html">Zoeken</a>
+                        <a href="${rootPath}/pages/account.html">Account</a>
                     </nav>
                 </div>
             </footer>
