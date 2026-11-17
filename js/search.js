@@ -60,6 +60,7 @@ const renderResults = (articles, query) => {
                 <div>
                     <p class="story-meta">${escapeSearchHtml(article.category)}</p>
                     <h2>${escapeSearchHtml(article.title)}</h2>
+                    <p class="result-summary">${escapeSearchHtml(article.summary || article.deck || "")}</p>
                 </div>
             </a>
         `).join("")
