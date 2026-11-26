@@ -4,7 +4,7 @@ A Dutch-language news website built with HTML, CSS, and vanilla JavaScript. This
 
 ## Run Locally
 
-You need a modern browser and any static HTTP server. No build step is required. Choose one of the following options from this repository's folder (`grafisch-jaapnieuws`).
+You need a modern browser and any static HTTP server. No build step is required. Choose one of the following options:
 
 ### Python 3
 
